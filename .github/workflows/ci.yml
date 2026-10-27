@@ -26,3 +26,15 @@ jobs:
 
       - name: Run automated tests
         run: python -m pytest -v
+
+  docker-build:
+    name: Build Docker image
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t cloud-status-api:ci .
+
